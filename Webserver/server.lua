@@ -44,6 +44,8 @@ srv:listen(80,function(conn)
               gpio.write(LED2, gpio.HIGH)
         end
         client:send(buf)
+    end)
+    conn:on("sent", function(client)
         client:close()
     end)
 end)
