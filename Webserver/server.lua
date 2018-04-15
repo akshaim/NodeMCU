@@ -16,7 +16,12 @@ LED1 = 1
 LED2 = 4
 gpio.mode(LED1, gpio.OUTPUT)
 gpio.mode(LED2, gpio.OUTPUT)
-srv=net.createServer(net.TCP)
+if (srv ~= nil) then
+    -- shut down old server instance
+    srv:close()
+else
+    srv=net.createServer(net.TCP)
+end
 srv:listen(80,function(conn)
     conn:on("receive", function(client,request)
         local buf = ""
