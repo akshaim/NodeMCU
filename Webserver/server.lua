@@ -45,6 +45,5 @@ srv:listen(80,function(conn)
         end
         client:send(buf)
         client:close()
-        collectgarbage()
     end)
 end)
