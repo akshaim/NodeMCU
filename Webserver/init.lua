@@ -13,7 +13,11 @@
 --    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 wifi.setmode(wifi.STATION)
-wifi.sta.config("Your SSID","Your WIfi Password")
+station_cfg={}
+station_cfg.ssid="Your SSID"
+station_cfg.pwd="Your WIfi Password"
+station_cfg.save=false
+wifi.sta.config(station_cfg)
 wifi.sta.connect()
 tmr.alarm(1, 1000, 1, function()
 if wifi.sta.getip()== nil then
